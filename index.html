@@ -8,9 +8,14 @@
 <body>
     <script>
         var words = ["apple", "banana", "cherry", "dragon", "elephant", "falcon", "giraffe", "honey", "iguana", "jungle", "kangaroo", "lemon", "mango", "nectar", "ocean"];
-var word=words[Math.floor(Math.random()*words.length)];
+        var ukrWords = ["сонце", "квітка", "дерево", "зірка", "вода", "місто", "радість", "щастя", "світло", "ніч", "любов", "думка", "доля", "успіх", "гордість"];
+var ukWords=ukrWords[Math.floor(Math.random()*ukrWords.length)];
+        var word=words[Math.floor(Math.random()*words.length)];
 var answerArray=[];
-for(let i=0;i<word.length;i++){
+let choise=prompt('english or українська')
+function english() {
+    
+ for(let i=0;i<word.length;i++){
     answerArray[i]='-';
 }
 let remainingLetters=word.length;
@@ -31,7 +36,39 @@ while(remainingLetters>0){
     }
 }
 alert(answerArray.join(' '));
-alert ('Good job! The answer was '+word);
+
+alert ('Good job! The answer was '+word);}
+
+function ukraine() {
+    
+ for(let i=0;i<ukWords.length;i++){
+    answerArray[i]='-';
+}
+let remainingLetters=ukWords.length;
+while(remainingLetters>0){
+    alert(answerArray.join(' '));
+    let guess=prompt('Вгадайте літеру, або натисніть скасувати');
+    if(guess===null){
+        break;
+    }else if(guess.length!==1){
+        alert('будь ласка введіть іншу літеру');
+    }else{
+        for(let j=0;j<ukWords.length;j++){
+            if(ukWords[j]===guess){
+                answerArray[j]=guess;
+                remainingLetters--;
+            }
+        }
+    }
+}
+alert(answerArray.join(' '));
+alert ('Чудова робота! Ваше слово '+ukWords);}
+if(choise==='english'){
+    english();
+}
+if(choise==='українська'){
+    ukraine();
+}
     </script>
 </body>
 </html>
